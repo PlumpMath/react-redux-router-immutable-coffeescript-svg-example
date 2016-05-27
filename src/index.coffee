@@ -29,8 +29,8 @@ window.onload = =>
 
     initial_state = Immutable.Map
         # locationBeforeTransitions: null
-        routing: '/zelda'
-        location: '/' # TODO : rename conflicting ui_state names and use those for location names
+        routing: '/'
+        # location: '/' # TODO : rename conflicting ui_state names and use those for location names
         ui_state: HOME
         viewport_width: width
         viewport_height: height
@@ -78,16 +78,23 @@ window.onload = =>
             return state.get('routing')
     )
 
+    about = React.createFactory require('./containers/about_000_.coffee')
 
-
-    {p} = React.DOM
+    {div, p, button} = React.DOM
 
     zelda = ->
-        p
-            style:
-                color: 'white'
-            ,
-            "Zelda"
+        div null,
+            p
+                style:
+
+                    color: 'white'
+                ,
+                "Zelda"
+            button
+
+                onClick: -> browserHistory.push '/'
+                ,
+                "Home"
 
 
 
@@ -103,6 +110,9 @@ window.onload = =>
                         path: '/'
                         component: app
                         ,
+                    Route
+                        path: '/about'
+                        component: about
                     Route
                         path: '/zelda'
                         component: zelda

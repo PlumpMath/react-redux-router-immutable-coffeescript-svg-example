@@ -79,11 +79,10 @@
 
 	window.onload = (function(_this) {
 	  return function() {
-	    var debounce, height, history, initial_state, initial_state2, main, p, ref3, set_boundingRect, store, width, x, y, zelda;
+	    var about, button, debounce, div, height, history, initial_state, initial_state2, main, p, ref3, ref4, set_boundingRect, store, width, x, y, zelda;
 	    ref3 = root.getBoundingClientRect(), width = ref3.width, height = ref3.height, x = ref3.x, y = ref3.y;
 	    initial_state = Immutable.Map({
-	      routing: '/zelda',
-	      location: '/',
+	      routing: '/',
 	      ui_state: HOME,
 	      viewport_width: width,
 	      viewport_height: height,
@@ -139,13 +138,18 @@
 	        return state.get('routing');
 	      }
 	    });
-	    p = React.DOM.p;
+	    about = React.createFactory(__webpack_require__(315));
+	    ref4 = React.DOM, div = ref4.div, p = ref4.p, button = ref4.button;
 	    zelda = function() {
-	      return p({
+	      return div(null, p({
 	        style: {
 	          color: 'white'
 	        }
-	      }, "Zelda");
+	      }, "Zelda"), button({
+	        onClick: function() {
+	          return browserHistory.push('/');
+	        }
+	      }, "Home"));
 	    };
 	    main = rr({
 	      render: function() {
@@ -156,6 +160,9 @@
 	        }, Route({
 	          path: '/',
 	          component: app
+	        }), Route({
+	          path: '/about',
+	          component: about
 	        }), Route({
 	          path: '/zelda',
 	          component: zelda
@@ -47109,7 +47116,9 @@
 	      height: '10%',
 	      fill: 'yellow',
 	      opacity: .5,
-	      onClick: this.props.on_home_click
+	      onClick: function() {
+	        return browserHistory.push('/');
+	      }
 	    }), rect({
 	      x: '20%',
 	      y: '0%',
@@ -47117,7 +47126,9 @@
 	      height: '10%',
 	      fill: 'white',
 	      opacity: .5,
-	      onClick: this.props.on_about_click
+	      onClick: function() {
+	        return browserHistory.push('/about');
+	      }
 	    }), rect({
 	      x: '40%',
 	      y: '0%',
@@ -47139,10 +47150,21 @@
 	      height: '10%',
 	      fill: 'yellow',
 	      opacity: .5,
+	      cursor: 'pointer',
 	      onClick: function() {
 	        return browserHistory.push('/zelda');
 	      }
-	    }));
+	    }), text({
+	      x: '84%',
+	      y: '8%',
+	      'font-family': 'Sans',
+	      fontSize: '100%',
+	      fill: 'white',
+	      cursor: 'pointer',
+	      onClick: function() {
+	        return browserHistory.push('/zelda');
+	      }
+	    }, "Zelda"));
 	  }
 	});
 
@@ -59439,9 +59461,9 @@
 	module.exports = function(initial_state) {
 	  var ABOUT, HOME, ref1, ref2, routeReducer, ui_state, viewport_height, viewport_width, viewport_x, viewport_y;
 	  ref1 = __webpack_require__(283), HOME = ref1.HOME, ABOUT = ref1.ABOUT;
-	  routeReducer = __webpack_require__(314);
-	  ref2 = __webpack_require__(312), viewport_x = ref2.viewport_x, viewport_y = ref2.viewport_y, viewport_height = ref2.viewport_height, viewport_width = ref2.viewport_width;
-	  ui_state = __webpack_require__(313).ui_state;
+	  routeReducer = __webpack_require__(312);
+	  ref2 = __webpack_require__(313), viewport_x = ref2.viewport_x, viewport_y = ref2.viewport_y, viewport_height = ref2.viewport_height, viewport_width = ref2.viewport_width;
+	  ui_state = __webpack_require__(314).ui_state;
 	  return combineReducers({
 	    ui_state: ui_state,
 	    viewport_width: viewport_width,
@@ -59667,6 +59689,35 @@
 
 /***/ },
 /* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var LOCATION_CHANGE, c, routeReducer;
+
+	LOCATION_CHANGE = __webpack_require__(290).LOCATION_CHANGE;
+
+	c = function() {
+	  return console.log.apply(console, arguments);
+	};
+
+	routeReducer = function(prev_state, action) {
+	  if (prev_state == null) {
+	    prev_state = initial_state;
+	  }
+	  if (action.type === LOCATION_CHANGE) {
+	    c('have location change', action);
+	    return _.assign(prev_state, {
+	      locationBeforeTransitions: action.payload
+	    });
+	  } else {
+	    return prev_state;
+	  }
+	};
+
+	module.exports = routeReducer;
+
+
+/***/ },
+/* 313 */
 /***/ function(module, exports) {
 
 	var viewport_height, viewport_width, viewport_x, viewport_y;
@@ -59724,7 +59775,7 @@
 
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var ABOUT, HOME, LOCATION_CHANGE, NAV_ABOUT, NAV_HOME, SET_BOUNDING_RECT, ref, ref1, ui_state;
@@ -59753,32 +59804,77 @@
 
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var LOCATION_CHANGE, c, routeReducer;
+	var _, about, about_container, c, connect, mapDispatchToProps, mapStateToProps, ref;
 
-	LOCATION_CHANGE = __webpack_require__(290).LOCATION_CHANGE;
+	ref = __webpack_require__(2)(), _ = ref._, c = ref.c;
 
-	c = function() {
-	  return console.log.apply(console, arguments);
+	connect = __webpack_require__(198).connect;
+
+	about = __webpack_require__(316);
+
+	mapStateToProps = function(state, ownProps) {
+	  var location, ui_state, viewport_height, viewport_width, viewport_x, viewport_y;
+	  viewport_x = state.get('viewport_x');
+	  viewport_y = state.get('viewport_y');
+	  viewport_width = state.get('viewport_width');
+	  viewport_height = state.get('viewport_height');
+	  ui_state = state.get('ui_state');
+	  location = state.get('location');
+	  return {
+	    viewport_x: viewport_x,
+	    viewport_y: viewport_y,
+	    viewport_width: viewport_width,
+	    viewport_height: viewport_height
+	  };
 	};
 
-	routeReducer = function(prev_state, action) {
-	  if (prev_state == null) {
-	    prev_state = initial_state;
-	  }
-	  if (action.type === LOCATION_CHANGE) {
-	    c('have location change', action);
-	    return _.assign(prev_state, {
-	      locationBeforeTransitions: action.payload
-	    });
-	  } else {
-	    return prev_state;
-	  }
+	mapDispatchToProps = function(dispatch, ownProps) {
+	  return {};
 	};
 
-	module.exports = routeReducer;
+	module.exports = about_container = connect(mapStateToProps, mapDispatchToProps)(about);
+
+
+/***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React, React_DOM, _, a, about, assign, body, c, circle, clipPath, code, d, defs, div, ellipse, feBlend, feGaussianBlur, feImage, feMerge, feMergeNode, feOffset, filter, font_awesome, foreignObject, g, gl_mat, h1, h2, h3, h4, h5, h6, image, input, keys, li, line, linearGradient, mat3, ol, p, path, pattern, polygon, polyline, radialGradient, rect, ref, ref1, rr, shortid, span, stop, svg, text, textArea, top_nav, ul, vec2, vec3;
+
+	ref = __webpack_require__(2)(), _ = ref._, gl_mat = ref.gl_mat, React = ref.React, React_DOM = ref.React_DOM, rr = ref.rr, c = ref.c, shortid = ref.shortid, assign = ref.assign, keys = ref.keys, mat3 = ref.mat3, vec3 = ref.vec3, vec2 = ref.vec2;
+
+	ref1 = React.DOM, p = ref1.p, div = ref1.div, h1 = ref1.h1, h2 = ref1.h2, h3 = ref1.h3, h4 = ref1.h4, h5 = ref1.h5, h6 = ref1.h6, span = ref1.span, svg = ref1.svg, circle = ref1.circle, rect = ref1.rect, ul = ref1.ul, line = ref1.line, li = ref1.li, ol = ref1.ol, code = ref1.code, a = ref1.a, input = ref1.input, defs = ref1.defs, clipPath = ref1.clipPath, body = ref1.body, linearGradient = ref1.linearGradient, stop = ref1.stop, g = ref1.g, path = ref1.path, d = ref1.d, polygon = ref1.polygon, image = ref1.image, pattern = ref1.pattern, filter = ref1.filter, feBlend = ref1.feBlend, feOffset = ref1.feOffset, polyline = ref1.polyline, feGaussianBlur = ref1.feGaussianBlur, feMergeNode = ref1.feMergeNode, feMerge = ref1.feMerge, radialGradient = ref1.radialGradient, foreignObject = ref1.foreignObject, text = ref1.text, textArea = ref1.textArea, ellipse = ref1.ellipse, pattern = ref1.pattern;
+
+	textArea = React.createFactory('textArea');
+
+	filter = React.createFactory('filter');
+
+	foreignObject = React.createFactory('foreignObject');
+
+	feGaussianBlur = React.createFactory('feGaussianBlur');
+
+	feImage = React.createFactory('feImage');
+
+	font_awesome = __webpack_require__(282);
+
+	top_nav = React.createFactory(__webpack_require__(221));
+
+	module.exports = about = rr({
+	  render: function() {
+	    return svg({
+	      width: '100%',
+	      height: '100%'
+	    }, top_nav(), text({
+	      x: '50%',
+	      y: '50%',
+	      fontSize: 40,
+	      fill: 'white'
+	    }, "About page"));
+	  }
+	});
 
 
 /***/ }

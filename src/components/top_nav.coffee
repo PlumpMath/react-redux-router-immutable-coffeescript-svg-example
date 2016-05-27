@@ -24,7 +24,9 @@ module.exports = nav_bar_top = rr
                 height: '10%'
                 fill: 'yellow'
                 opacity: .5
-                onClick: @props.on_home_click
+                onClick:-> browserHistory.push '/'
+                # onClick: @props.on_home_click
+
             rect
                 x: '20%'
                 y: '0%'
@@ -32,7 +34,8 @@ module.exports = nav_bar_top = rr
                 height: '10%'
                 fill: 'white'
                 opacity: .5
-                onClick: @props.on_about_click
+                onClick:-> browserHistory.push '/about'
+                # onClick: @props.on_about_click
             rect
                 x: '40%'
                 y: '0%'
@@ -54,8 +57,20 @@ module.exports = nav_bar_top = rr
                 height: '10%'
                 fill: 'yellow'
                 opacity: .5
+                cursor: 'pointer'
                 # onClick: @props.router_on_zelda_click
                 onClick:-> browserHistory.push '/zelda'
+                ,
+            text
+                x: '84%'
+                y: '8%'
+                'font-family': 'Sans'
+                fontSize: '100%'
+                fill: 'white'
+                cursor: 'pointer'
+                onClick:-> browserHistory.push '/zelda'
+                ,
+                "Zelda"
             # foreignObject
             #     x: 0
             #     y: 0

@@ -23,27 +23,34 @@ ES6 and TypeScript are overly verbose, this doesn't help productivity.
 
 ##### some notes: things to do
 
+
+
 -  learn lessons from the other trendy boilerplates, some of cthese are enumerated in points below
 
 - server side hot module reloading (our own custom)
 
 - our own custom redux dev tools (time travel)  this means containers holding containers.  like put the production version inside a development container.
 
-- learn to use font awesome and fonts generally.
+- learn about font-awesome and fonts generally.
 
 - for client side hot module reloading will need a dev server
 
 - so make a dev server
 
-- also the dev server needs to have primus in it. some websocket thing.
+- also the dev server needs to have primus in it.
 
-- implement navigation constructss
+- move assets to own folder out of build
+
 
 - new system for transform matrices where 0,0 is upper left corner and 1,1 is lower right corner.  i think this is very similar to openGL convention.
 
 - implement this thing in webpack that allows requires to be isomorphic from some defined project root rather than relative through the file structure.
 
-- Eventually siphon in some of the progressive web app stuff
+- implement, progressive web app stuff, assets on demand webpack config,
+
+- WebWorkers !!! webpack config for WebWorkers
+
+- WebGL stuff
 
 ##### revisit links
 
