@@ -9,6 +9,6 @@ logger = createLogger()
 
 
 configure_store = module.exports = (initial_state) ->
-    # return createStore(root_reducer, initial_state, applyMiddleware(api))
+
     root_reducer = require('../reducers/index.coffee')(initial_state)
     return createStore(root_reducer, initial_state, applyMiddleware(thunk, promise, logger))

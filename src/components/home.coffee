@@ -10,6 +10,8 @@ feImage = React.createFactory 'feImage'
 
 font_awesome = require 'react-fontawesome'
 
+top_nav = React.createFactory require('../containers/top_nav.coffee')
+
 module.exports = home = rr
     # TODO
     # move the timekeep stuff and similar out to index, and
@@ -41,13 +43,13 @@ module.exports = home = rr
 
         if (@state.time_hours < 12) and (@state.greeting isnt "Good Morning")
             @setState
-                greeting: "Good Morning"
+                greeting: "Good morning,"
         if (@state.time_hours > 11) and (@state.time_hours < 18) and (@state.greeting isnt "Good Afternoon")
             @setState
-                greeting: "Good Afternoon"
+                greeting: "Good afternoon,"
         if (@state.time_hours > 17) and (@state.greeting isnt "Good Evening")
             @setState
-                greeting: "Good Evening"
+                greeting: "Good evening,"
 
 
     timekeep: ->
@@ -93,21 +95,22 @@ module.exports = home = rr
             width: '100%'
             height: '100%'
         ,
-            rect
-                x: 10
-                y: 10
-                width: 50
-                height: 50
-                fill: 'white'
+            top_nav()
+            # rect
+            #     x: 10
+            #     y: 10
+            #     width: 50
+            #     height: 50
+            #     fill: 'white'
             image
                 x: 0
-                y:0
+                y: '10%'
                 width:"100%"
                 height:"100%"
                 xlinkHref:@state.image_000
             image
-                x: 400
-                y: 20
+                x: '60%'
+                y: '18%'
                 width: 100
                 height: 100
                 xlinkHref:@state.image_001
@@ -122,8 +125,8 @@ module.exports = home = rr
                 " #{@state.time_hours}:#{@state.time_minutes}:#{@state.time_seconds}"
 
             foreignObject
-                x: '40%'
-                y: '40%'
+                x: '30%'
+                y: '70%'
                 width: '50%'
                 height: '40%'
                 ,
@@ -132,18 +135,17 @@ module.exports = home = rr
                         color: 'white'
                         fontFamily: 'Sans'
                     ,
-
-                    "#{@state.greeting} Wylie, what would you like to accomplish today ?\n #{@state.thoughts}"
-                textArea
-                    id: 'text_entry'
-                    style:
-                        height: '100%'
-                        width: '100%'
-                        fontSize: '70%'
-                        opacity: .3
-                    onChange: @thoughts_take
-                p
-                    style:
-                        color: 'white'
-                    ,
-                    @state.thoughts
+                    "#{@state.greeting} what would you like to accomplish today ?\n #{@state.thoughts}"
+                # textArea
+                #     id: 'text_entry'
+                #     style:
+                #         height: '100%'
+                #         width: '100%'
+                #         fontSize: '70%'
+                #         opacity: .3
+                #     onChange: @thoughts_take
+                # p
+                #     style:
+                #         color: 'white'
+                #     ,
+                #     @state.thoughts

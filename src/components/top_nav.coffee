@@ -26,7 +26,17 @@ module.exports = nav_bar_top = rr
                 opacity: .5
                 onClick:-> browserHistory.push '/'
                 # onClick: @props.on_home_click
-
+                ,
+            text
+                x: '4%'
+                y: '8%'
+                'font-family': 'Sans'
+                fontSize: '100%'
+                fill: 'black'
+                cursor: 'pointer'
+                onClick:-> browserHistory.push '/'
+                ,
+                "HOME"
             rect
                 x: '20%'
                 y: '0%'
@@ -36,6 +46,16 @@ module.exports = nav_bar_top = rr
                 opacity: .5
                 onClick:-> browserHistory.push '/about'
                 # onClick: @props.on_about_click
+            text
+                x: '24%'
+                y: '8%'
+                'font-family': 'Sans'
+                fontSize: '100%'
+                fill: 'black'
+                cursor: 'pointer'
+                onClick:-> browserHistory.push '/about'
+                ,
+                "ABOUT"
             rect
                 x: '40%'
                 y: '0%'
@@ -59,7 +79,7 @@ module.exports = nav_bar_top = rr
                 opacity: .5
                 cursor: 'pointer'
                 # onClick: @props.router_on_zelda_click
-                onClick:-> browserHistory.push '/zelda'
+                # onClick:-> browserHistory.push '/zelda'
                 ,
             text
                 x: '84%'
@@ -68,9 +88,9 @@ module.exports = nav_bar_top = rr
                 fontSize: '100%'
                 fill: 'white'
                 cursor: 'pointer'
-                onClick:-> browserHistory.push '/zelda'
+                # onClick:-> browserHistory.push '/zelda'
                 ,
-                "Zelda"
+                "MineSweeper"
             # foreignObject
             #     x: 0
             #     y: 0

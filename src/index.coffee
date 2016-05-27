@@ -3,8 +3,7 @@
 {_, React, React_DOM, rr, c} = require('./boilerplate.coffee')()
 
 root = document.getElementById 'root'
-app = React.createFactory require('./containers/app_001_.coffee')
-app2 = require('./containers/app_001_.coffee')
+
 Provider = React.createFactory require('react-redux').Provider
 Immutable = require 'immutable'
 
@@ -78,27 +77,13 @@ window.onload = =>
             return state.get('routing')
     )
 
+
+    # app = React.createFactory require('./containers/app_001_.coffee')
+    home = React.createFactory require('./containers/home.coffee')
     about = React.createFactory require('./containers/about_000_.coffee')
 
-    {div, p, button} = React.DOM
 
-    zelda = ->
-        div null,
-            p
-                style:
-
-                    color: 'white'
-                ,
-                "Zelda"
-            button
-
-                onClick: -> browserHistory.push '/'
-                ,
-                "Home"
-
-
-
-    main = rr
+    index = rr
         render: ->
             Provider
                 store: store
@@ -108,13 +93,11 @@ window.onload = =>
                     ,
                     Route
                         path: '/'
-                        component: app
+                        component: home
                         ,
                     Route
                         path: '/about'
                         component: about
-                    Route
-                        path: '/zelda'
-                        component: zelda
 
-    React_DOM.render main(), root
+
+    React_DOM.render index(), root

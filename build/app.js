@@ -51,15 +51,11 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ABOUT, HOME, Immutable, Provider, React, React_DOM, Route, Router, _, _IndexRoute, _Route, _Router, app, app2, browserHistory, c, ref, ref1, ref2, root, rr, set_bounding_rect, syncHistoryWithStore;
+	var ABOUT, HOME, Immutable, Provider, React, React_DOM, Route, Router, _, _IndexRoute, _Route, _Router, browserHistory, c, ref, ref1, ref2, root, rr, set_bounding_rect, syncHistoryWithStore;
 
 	ref = __webpack_require__(2)(), _ = ref._, React = ref.React, React_DOM = ref.React_DOM, rr = ref.rr, c = ref.c;
 
 	root = document.getElementById('root');
-
-	app = React.createFactory(__webpack_require__(197));
-
-	app2 = __webpack_require__(197);
 
 	Provider = React.createFactory(__webpack_require__(198).Provider);
 
@@ -79,7 +75,7 @@
 
 	window.onload = (function(_this) {
 	  return function() {
-	    var about, button, debounce, div, height, history, initial_state, initial_state2, main, p, ref3, ref4, set_boundingRect, store, width, x, y, zelda;
+	    var about, debounce, height, history, home, index, initial_state, initial_state2, ref3, set_boundingRect, store, width, x, y;
 	    ref3 = root.getBoundingClientRect(), width = ref3.width, height = ref3.height, x = ref3.x, y = ref3.y;
 	    initial_state = Immutable.Map({
 	      routing: '/',
@@ -138,20 +134,9 @@
 	        return state.get('routing');
 	      }
 	    });
+	    home = React.createFactory(__webpack_require__(287));
 	    about = React.createFactory(__webpack_require__(315));
-	    ref4 = React.DOM, div = ref4.div, p = ref4.p, button = ref4.button;
-	    zelda = function() {
-	      return div(null, p({
-	        style: {
-	          color: 'white'
-	        }
-	      }, "Zelda"), button({
-	        onClick: function() {
-	          return browserHistory.push('/');
-	        }
-	      }, "Home"));
-	    };
-	    main = rr({
+	    index = rr({
 	      render: function() {
 	        return Provider({
 	          store: store
@@ -159,17 +144,14 @@
 	          history: history
 	        }, Route({
 	          path: '/',
-	          component: app
+	          component: home
 	        }), Route({
 	          path: '/about',
 	          component: about
-	        }), Route({
-	          path: '/zelda',
-	          component: zelda
 	        })));
 	      }
 	    });
-	    return React_DOM.render(main(), root);
+	    return React_DOM.render(index(), root);
 	  };
 	})(this);
 
@@ -45396,48 +45378,7 @@
 
 
 /***/ },
-/* 197 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var _, app, app_container, c, connect, mapDispatchToProps, mapStateToProps, ref;
-
-	ref = __webpack_require__(2)(), _ = ref._, c = ref.c;
-
-	connect = __webpack_require__(198).connect;
-
-	app = __webpack_require__(220);
-
-	mapStateToProps = function(state, ownProps) {
-	  var location, ui_state, viewport_height, viewport_width, viewport_x, viewport_y;
-	  viewport_x = state.get('viewport_x');
-	  viewport_y = state.get('viewport_y');
-	  viewport_width = state.get('viewport_width');
-	  viewport_height = state.get('viewport_height');
-	  ui_state = state.get('ui_state');
-	  location = state.get('location');
-	  return {
-	    location: location,
-	    ui_state: ui_state,
-	    viewport_x: viewport_x,
-	    viewport_y: viewport_y,
-	    viewport_width: viewport_width,
-	    viewport_height: viewport_height,
-	    color: 'grey'
-	  };
-	};
-
-	mapDispatchToProps = function(dispatch, ownProps) {
-	  return {
-	    onClick: function() {
-	      return c('clicked');
-	    }
-	  };
-	};
-
-	module.exports = app_container = connect(mapStateToProps, mapDispatchToProps)(app);
-
-
-/***/ },
+/* 197 */,
 /* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -46982,65 +46923,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var ABOUT, HOME, React, _, a, app, c, circle, clipPath, code, d, defs, div, ellipse, feBlend, feGaussianBlur, feMerge, feMergeNode, feOffset, filter, foreignObject, g, gl_mat, h1, h2, h3, h4, h5, h6, home, image, img, input, li, line, linearGradient, main_div, ol, p, path, pattern, polygon, polyline, radialGradient, rect, ref, ref1, ref2, rr, span, stop, svg, text, top_nav, ul;
-
-	ref = __webpack_require__(2)(), _ = ref._, gl_mat = ref.gl_mat, React = ref.React, rr = ref.rr, c = ref.c;
-
-	ref1 = React.DOM, p = ref1.p, div = ref1.div, h1 = ref1.h1, h2 = ref1.h2, h3 = ref1.h3, h4 = ref1.h4, h5 = ref1.h5, h6 = ref1.h6, span = ref1.span, svg = ref1.svg, circle = ref1.circle, rect = ref1.rect, ul = ref1.ul, line = ref1.line, li = ref1.li, ol = ref1.ol, code = ref1.code, a = ref1.a, input = ref1.input, defs = ref1.defs, clipPath = ref1.clipPath, linearGradient = ref1.linearGradient, stop = ref1.stop, g = ref1.g, path = ref1.path, d = ref1.d, polygon = ref1.polygon, image = ref1.image, pattern = ref1.pattern, filter = ref1.filter, feBlend = ref1.feBlend, feOffset = ref1.feOffset, polyline = ref1.polyline, feGaussianBlur = ref1.feGaussianBlur, feMergeNode = ref1.feMergeNode, feMerge = ref1.feMerge, radialGradient = ref1.radialGradient, foreignObject = ref1.foreignObject, text = ref1.text, ellipse = ref1.ellipse, img = ref1.img;
-
-	main_div = function() {
-	  return {
-	    style: {
-	      background: 'white',
-	      position: 'absolute',
-	      width: window.innerWidth,
-	      height: window.innerHeight,
-	      left: 0,
-	      right: 0,
-	      top: 0,
-	      bottom: 0
-	    }
-	  };
-	};
-
-	top_nav = React.createFactory(__webpack_require__(221));
-
-	home = React.createFactory(__webpack_require__(287));
-
-	ref2 = __webpack_require__(283), HOME = ref2.HOME, ABOUT = ref2.ABOUT;
-
-	module.exports = app = function(arg) {
-	  var color, location, onClick, ui_state, viewport_height, viewport_width, viewport_x, viewport_y;
-	  location = arg.location, ui_state = arg.ui_state, viewport_x = arg.viewport_x, viewport_y = arg.viewport_y, viewport_width = arg.viewport_width, viewport_height = arg.viewport_height, color = arg.color, onClick = arg.onClick;
-	  return svg({
-	    width: '100%',
-	    height: '100%'
-	  }, rect({
-	    x: 0,
-	    y: 0,
-	    width: viewport_width / 2,
-	    height: viewport_height / 2,
-	    fill: color || 'red',
-	    onClick: onClick || function() {
-	      return c('clicked here');
-	    }
-	  }), top_nav(), (function() {
-	    switch (ui_state) {
-	      case HOME:
-	        return home();
-	      case ABOUT:
-	        return c('make an about page to display here');
-	      default:
-	        return c('nothing');
-	    }
-	  })());
-	};
-
-
-/***/ },
+/* 220 */,
 /* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47119,7 +47002,17 @@
 	      onClick: function() {
 	        return browserHistory.push('/');
 	      }
-	    }), rect({
+	    }), text({
+	      x: '4%',
+	      y: '8%',
+	      'font-family': 'Sans',
+	      fontSize: '100%',
+	      fill: 'black',
+	      cursor: 'pointer',
+	      onClick: function() {
+	        return browserHistory.push('/');
+	      }
+	    }, "HOME"), rect({
 	      x: '20%',
 	      y: '0%',
 	      width: '20%',
@@ -47129,7 +47022,17 @@
 	      onClick: function() {
 	        return browserHistory.push('/about');
 	      }
-	    }), rect({
+	    }), text({
+	      x: '24%',
+	      y: '8%',
+	      'font-family': 'Sans',
+	      fontSize: '100%',
+	      fill: 'black',
+	      cursor: 'pointer',
+	      onClick: function() {
+	        return browserHistory.push('/about');
+	      }
+	    }, "ABOUT"), rect({
 	      x: '40%',
 	      y: '0%',
 	      width: '20%',
@@ -47150,21 +47053,15 @@
 	      height: '10%',
 	      fill: 'yellow',
 	      opacity: .5,
-	      cursor: 'pointer',
-	      onClick: function() {
-	        return browserHistory.push('/zelda');
-	      }
+	      cursor: 'pointer'
 	    }), text({
 	      x: '84%',
 	      y: '8%',
 	      'font-family': 'Sans',
 	      fontSize: '100%',
 	      fill: 'white',
-	      cursor: 'pointer',
-	      onClick: function() {
-	        return browserHistory.push('/zelda');
-	      }
-	    }, "Zelda"));
+	      cursor: 'pointer'
+	    }, "MineSweeper"));
 	  }
 	});
 
@@ -52858,7 +52755,7 @@
 /* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React, React_DOM, _, a, assign, body, c, circle, clipPath, code, d, defs, div, ellipse, feBlend, feGaussianBlur, feImage, feMerge, feMergeNode, feOffset, filter, font_awesome, foreignObject, g, gl_mat, h1, h2, h3, h4, h5, h6, home, image, input, keys, li, line, linearGradient, mat3, ol, p, path, pattern, polygon, polyline, radialGradient, rect, ref, ref1, rr, shortid, span, stop, svg, text, textArea, ul, vec2, vec3;
+	var React, React_DOM, _, a, assign, body, c, circle, clipPath, code, d, defs, div, ellipse, feBlend, feGaussianBlur, feImage, feMerge, feMergeNode, feOffset, filter, font_awesome, foreignObject, g, gl_mat, h1, h2, h3, h4, h5, h6, home, image, input, keys, li, line, linearGradient, mat3, ol, p, path, pattern, polygon, polyline, radialGradient, rect, ref, ref1, rr, shortid, span, stop, svg, text, textArea, top_nav, ul, vec2, vec3;
 
 	ref = __webpack_require__(2)(), _ = ref._, gl_mat = ref.gl_mat, React = ref.React, React_DOM = ref.React_DOM, rr = ref.rr, c = ref.c, shortid = ref.shortid, assign = ref.assign, keys = ref.keys, mat3 = ref.mat3, vec3 = ref.vec3, vec2 = ref.vec2;
 
@@ -52875,6 +52772,8 @@
 	feImage = React.createFactory('feImage');
 
 	font_awesome = __webpack_require__(282);
+
+	top_nav = React.createFactory(__webpack_require__(221));
 
 	module.exports = home = rr({
 	  componentWillUnmount: function() {
@@ -52902,17 +52801,17 @@
 	  greeting_keep: function() {
 	    if ((this.state.time_hours < 12) && (this.state.greeting !== "Good Morning")) {
 	      this.setState({
-	        greeting: "Good Morning"
+	        greeting: "Good morning,"
 	      });
 	    }
 	    if ((this.state.time_hours > 11) && (this.state.time_hours < 18) && (this.state.greeting !== "Good Afternoon")) {
 	      this.setState({
-	        greeting: "Good Afternoon"
+	        greeting: "Good afternoon,"
 	      });
 	    }
 	    if ((this.state.time_hours > 17) && (this.state.greeting !== "Good Evening")) {
 	      return this.setState({
-	        greeting: "Good Evening"
+	        greeting: "Good evening,"
 	      });
 	    }
 	  },
@@ -52964,21 +52863,15 @@
 	    return svg({
 	      width: '100%',
 	      height: '100%'
-	    }, rect({
-	      x: 10,
-	      y: 10,
-	      width: 50,
-	      height: 50,
-	      fill: 'white'
-	    }), image({
+	    }, top_nav(), image({
 	      x: 0,
-	      y: 0,
+	      y: '10%',
 	      width: "100%",
 	      height: "100%",
 	      xlinkHref: this.state.image_000
 	    }), image({
-	      x: 400,
-	      y: 20,
+	      x: '60%',
+	      y: '18%',
 	      width: 100,
 	      height: 100,
 	      xlinkHref: this.state.image_001
@@ -52989,8 +52882,8 @@
 	      fontFamily: 'Arial',
 	      fontSize: '20px'
 	    }, " " + this.state.time_hours + ":" + this.state.time_minutes + ":" + this.state.time_seconds), foreignObject({
-	      x: '40%',
-	      y: '40%',
+	      x: '30%',
+	      y: '70%',
 	      width: '50%',
 	      height: '40%'
 	    }, p({
@@ -52998,20 +52891,7 @@
 	        color: 'white',
 	        fontFamily: 'Sans'
 	      }
-	    }, this.state.greeting + " Wylie, what would you like to accomplish today ?\n " + this.state.thoughts), textArea({
-	      id: 'text_entry',
-	      style: {
-	        height: '100%',
-	        width: '100%',
-	        fontSize: '70%',
-	        opacity: .3
-	      },
-	      onChange: this.thoughts_take
-	    }), p({
-	      style: {
-	        color: 'white'
-	      }
-	    }, this.state.thoughts)));
+	    }, this.state.greeting + " what would you like to accomplish today ?\n " + this.state.thoughts)));
 	  }
 	});
 
